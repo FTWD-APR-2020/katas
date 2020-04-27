@@ -92,3 +92,45 @@ var splitInteger = function (num, parts) {
   //     array[i] = Math.floor(num / parts) + (i < num % parts);
   //   return array;
 };
+
+// https://www.codewars.com/kata/5808ff71c7cfa1c6aa00006d/train/javascript
+function letterCount(s) {
+  //your code here
+  //   let hash = {};
+  //   for(let i = 0; i < s.length; i++) {
+  //     if(hash[s[i]]) {
+  //       hash[s[i]]++;
+  //     } else {
+  //       hash[s[i]] = 1;
+  //     }
+  //   }
+  //   return hash;
+  //   let obj = {};
+  //   s.split('').forEach(el => {
+  //     obj[el]? obj[el]++ : obj[el]=1;
+  //   });
+  //   return obj;
+  return [...s].reduce(
+    (acc, val) => (acc[val] ? acc[val]++ : (acc[val] = 1), acc),
+    {}
+  );
+}
+
+// https://www.codewars.com/kata/545cedaa9943f7fe7b000048/train/javascript
+function isPangram(string) {
+  //...
+  //   let a = 97;
+  //   let z = 122;
+
+  //   for(let i = a; i <= z; i++) {
+  //     if(!string.toLowerCase().includes(String.fromCharCode(i))) return false;
+  //   }
+  //   return true;
+  //   let regex = /[^a-z]+/gi;
+  //   const worth = string.toLowerCase().replace(regex, '');
+  //   const itsMatched = new Set(Array.from(worth)).size;
+  //   return itsMatched === 26;
+  return [..."abcdefghijklmnopqrstuvwxyz"].every(
+    (char) => string.toLowerCase().indexOf(char) !== -1
+  );
+}
