@@ -167,3 +167,22 @@ function moreZeros(s) {
 //     let numberOfOnes = binary.replace(/0/g,'').length;  //.filter(num => num*1 === 1).length;
 //     return numberOfZeroes > numberOfOnes;
 //   }))]
+
+// https://www.codewars.com/kata/59e61c577905df540000016b/train/javascript
+
+function hungrySeven(arr) {
+  //   let pos = arr.join('').indexOf('789');
+  //   if(pos === -1) return arr;
+  //   arr.splice(pos, 3, 8,9,7);
+  //   return hungrySeven(arr);
+  return ~arr.join("").indexOf("789")
+    ? hungrySeven(arr.join("").replace("789", "897").split(""))
+    : arr.map((x) => +x);
+}
+
+// Solution 2
+//   arr = arr.join('');
+//   while(/789/.test(arr)) {
+//     arr = arr.replace(/789/g, '897');
+//   }
+//   return arr.split('').map(x => x*1);
