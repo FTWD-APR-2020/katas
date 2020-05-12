@@ -205,3 +205,23 @@ function cakes(recipe, available) {
 
   //   return Math.min(...Object.keys(recipe).map(key => Math.floor(available[key]/recipe[key] || 0)))
 }
+
+// https://www.codewars.com/kata/5a959662373c2e761d000183/train/javascript
+
+const ticker = (text, width, tick) => {
+  text = [...text];
+  const spaces = Array.from({ length: width }, (_) => " ");
+  text = spaces.concat(text);
+  for (let i = 0; i < tick; i++) {
+    let ch = text.shift();
+    text.push(ch);
+  }
+  return text.slice(0, width).join("");
+};
+
+// Solution 2
+//   const space = ' '.repeat(width);
+//   const setText = space + text + space;
+//   tick = tick % (setText.length-width);
+//   const result = setText.substring(tick, tick+width);
+//   return result;
