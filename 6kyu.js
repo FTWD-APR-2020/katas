@@ -225,3 +225,56 @@ const ticker = (text, width, tick) => {
 //   tick = tick % (setText.length-width);
 //   const result = setText.substring(tick, tick+width);
 //   return result;
+
+// https://www.codewars.com/kata/5848565e273af816fb000449/train/javascript
+
+var encryptThis = function (text) {
+  //   console.log(text.split(' '))
+  return text
+    .split(" ")
+    .map((v) => {
+      let wordArr = [...v];
+      if (v.length > 2) {
+        [wordArr[1], wordArr[wordArr.length - 1]] = [
+          wordArr[wordArr.length - 1],
+          wordArr[1],
+        ];
+        //       let hv = wordArr[1];
+        //       wordArr[1] = wordArr[wordArr.length-1];
+        //       wordArr[wordArr.length-1] = hv;
+      }
+      wordArr[0] = wordArr[0].charCodeAt();
+      return wordArr.join("");
+    })
+    .join(" ");
+};
+
+/** 
+  let firstLetter = true;
+    text = text.split('');
+    let secondLetter = 0;
+    let ls = 0;
+    let secondLetterCheck = 1;
+    for(let i = 0; i < text.length; i++) {
+      if(firstLetter) {
+        if(text[i+1] !== ' ') {
+          secondLetter = i+1;
+        }
+        text[i] = text[i].charCodeAt();
+        firstLetter = false;
+        secondLetterCheck = i + 1;
+      } else if(text[i] === ' ') {
+          if(secondLetter === secondLetterCheck) {
+            ls = text[i-1];
+            text[i-1] = text[secondLetter];
+            text[secondLetter] = ls;
+          }
+          firstLetter = true;
+      } else if() { 
+        ls = text[i];
+        text[i] = text[secondLetter];
+        text[secondLetter] = ls;
+      }
+    }
+    return text.join('');
+  */
