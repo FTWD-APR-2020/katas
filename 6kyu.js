@@ -134,3 +134,12 @@ function isPangram(string) {
     (char) => string.toLowerCase().indexOf(char) !== -1
   );
 }
+
+// https://www.codewars.com/kata/55de9c184bb732a87f000055/train/javascript
+function reverse(arr) {
+  for (let left = 0, right = arr.length - 1; left < right; left++, right--) {
+    let t = arr[left];
+    arr[left] = arr[right];
+    arr[right] = t;
+  }
+}
