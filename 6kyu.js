@@ -314,6 +314,64 @@ function splitAndAdd(arr, n) {
       );
 }
 
+// https://www.codewars.com/kata/55de9c184bb732a87f000055/train/javascript
+function reverse(arr) {
+  for (let left = 0, right = arr.length - 1; left < right; left++, right--) {
+    let t = arr[left];
+    arr[left] = arr[right];
+    arr[right] = t;
+  }
+}
+
+// https://www.codewars.com/kata/56c30ad8585d9ab99b000c54
+function workOnStrings(a, b) {
+  const counter = (s) =>
+    [...s.toLowerCase()].reduce((a, c) => (a[c] = a[c] + 1 || 1) && a, {});
+  let switchCase = (s) =>
+    s === s.toLowerCase() ? s.toUpperCase() : s.toLowerCase();
+  let toSwitchA = Object.keys(counter(a)).filter(
+    (letter) => counter(a)[letter] % 2 === 1
+  );
+  let toSwitchB = Object.keys(counter(b)).filter(
+    (letter) => counter(b)[letter] % 2 === 1
+  );
+  let replacedA = [...a]
+    .map((letter) =>
+      toSwitchB.includes(letter.toLowerCase()) ? switchCase(letter) : letter
+    )
+    .join("");
+  let replacedB = [...b]
+    .map((letter) =>
+      toSwitchA.includes(letter.toLowerCase()) ? switchCase(letter) : letter
+    )
+    .join("");
+  return replacedA + replacedB;
+}
+
+// https://www.codewars.com/kata/552c028c030765286c00007d/train/javascript
+function iqTest(numbers) {
+  //     let counterI = 0;
+  //     let indexI = 0;
+  //     let indexO = 0;
+  //     numbers = numbers.split(' ');
+  //     for(let i = 0; i < numbers.length; i++ ) {
+  //       numbers[i] % 2 === 0 ? (counterI++, indexI=i) : indexO=i;
+  //     }
+  //     return counterI === 1 ? indexI+1 : indexO+1
+  numbers = numbers.split(" ").map((num) => num % 2);
+  return numbers.reduce((a, v) => a + v) === 1
+    ? numbers.indexOf(1) + 1
+    : numbers.indexOf(0) + 1;
+}
+
+// console.time('iqtest1')
+// iqTest1('1 1 0 1');
+// console.timeEnd('iqtest1')
+
+// console.time('iqtest2')
+// iqTest2('1 1 0 1');
+// console.timeEnd('iqtest2')
+
 // https://www.codewars.com/kata/5592e3bd57b64d00f3000047
 
 // Solution 1
